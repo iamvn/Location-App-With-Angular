@@ -1,0 +1,14 @@
+<app-header></app-header>
+<router-outlet>
+  <ng-http-loader
+    [backdrop]="true"
+    [backgroundColor]="'#5596f6fa'"
+    [debounceDelay]="100"
+    [extraDuration]="300"
+    [minDuration]="300"
+    opacity=".6"
+    [backdropBackgroundColor]="'rgba(119,119,119,0.08)'"
+    [spinner]="spinkit.skWave">
+  </ng-http-loader>
+</router-outlet>
+<app-footer></app-footer>
