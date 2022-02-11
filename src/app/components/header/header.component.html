@@ -1,0 +1,21 @@
+<nav class="navbar navbar-light bg-light shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand font-weight-bold" routerLink="/load-locations">
+      <i class="bi bi-compass"></i>
+      {{'Location App'}}
+    </a>
+    <form *ngIf="(currentUrl!=='/about-me')" class="d-flex">
+      <input (keyup)="searchLocationByPostalCode($event)" aria-label="Search" class="form-control form-control-sm me-2"
+             placeholder="Enter Postal Code" type="search">
+    </form>
+    <div *ngIf="(currentUrl=='/about-me')" class="d-flex text-decoration-none">
+      <a class="px-2" href="https://www.linkedin.com/in/vinay-bharti-b825b4121/" title="Linkedin"><i
+        class="bi bi-linkedin"></i></a>
+      <a class="px-2" href="https://github.com/iamvn"><i class="bi bi-github" title="Github"></i></a>
+      <a class="px-2" href="mailto:vnbharti56@gmail.com"><i class="bi bi-envelope-fill" title="Email Me"></i></a>
+      <a class="px-2" href="tel:+917249753998"><i class="bi bi-telephone-fill" title="Call Me"></i></a>
+      <a class="px-2" download="Vinay Bharti Frontend Developer" href="assets/Vinay%20Bharti.pdf"
+         title="Download Resume"><i class="bi bi-arrow-down-square-fill"></i></a>
+    </div>
+  </div>
+</nav>

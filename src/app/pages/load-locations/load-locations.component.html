@@ -1,0 +1,48 @@
+<div class="table-responsive h-75vh mt-2">
+    <table class="table table-borderless table-sm table-hover table-striped table-sm">
+      <thead class="shadow-sm fw-light sticky-top bg-blue-light">
+      <tr class="fst-normal">
+        <th class="font-weight-normal px-2" scope="col">{{'Name'}}</th>
+        <th class="font-weight-normal px-2" scope="col">{{'Country'}}</th>
+        <th class="font-weight-normal px-2" scope="col">{{'State'}}</th>
+        <th class="font-weight-normal px-2" scope="col">{{'City'}}</th>
+        <th class="font-weight-normal px-2" scope="col">{{'Street'}} </th>
+        <th class="font-weight-normal px-2" scope="col">{{'Postal Code'}} </th>
+        <th class="font-weight-normal px-2" scope="col">{{'Phone'}} </th>
+        <th class="font-weight-normal px-2" scope="col">{{'Know More'}} </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="fs-6 fw-normal" *ngFor="let location of locationData | slice: (page-1) * pageSize : page * pageSize">
+        <td class="p-2">{{location.name || '-'}}</td>
+        <td class="p-2">{{location.country || '-'}}</td>
+        <td  class="p-2">{{location.state || '-'}}</td>
+        <td class="p-2">{{location.city || '-'}}</td>
+        <td class="p-2">{{location.street || '-'}}</td>
+        <td class="p-2">{{location.postal_code || '-'}}</td>
+        <td class="p-2">{{location.phone || '-'}}</td>
+        <td class="p-2 text-center">
+          <a *ngIf="location.website_url" [href]="location.website_url" target="_blank" class="far fa-edit mx-1 text-decoration-none" title="{{'Click to know more'}}">
+              <i class="bi bi-arrow-up-right-square"></i>
+          </a>
+          <a *ngIf="!location.website_url" target="_blank" class="far fa-edit mx-1" title="{{'No link is available'}}">
+            <i class="bi bi-exclamation-circle bg-red"></i>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+<div class="d-flex justify-content-between p-2">
+  <div class="d-flex align-items-center">
+    <select (change)="setSelectedRecordsChoice($event,page);" class="form-select w-auto mx-2">
+      <option *ngFor="let recordPerPage of recordPerPageSelection" [value]="recordPerPage">{{recordPerPage}}</option>
+    </select>
+    <label class="text-muted">{{ 'Records Per Page'}}</label>
+  </div>
+  <ngb-pagination
+    [(page)]="page" [collectionSize]="this.locationData?.length || 0" [pageSize]="pageSize">
+  </ngb-pagination>
+</div>
